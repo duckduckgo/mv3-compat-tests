@@ -1,7 +1,8 @@
 /** global mocha, chai */
 
 const { expect } = chai;
-mocha.setup("bdd");
+mocha.setup('bdd');
+mocha.timeout(10000);
 
 const testUrl =
   "https://bad.third-party.site/privacy-protections/request-blocking/block-me/script.js";
@@ -74,7 +75,6 @@ describe("API scopes", () => {
 });
 
 describe("chrome.declarativeNetRequest", () => {
-  this.setTimeout(10000);
 
   it("can block requests", async () => {
     await dnrTest(
