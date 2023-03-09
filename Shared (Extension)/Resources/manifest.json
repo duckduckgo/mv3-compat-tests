@@ -35,6 +35,14 @@
     },
 
     "permissions": [
-        "declarativeNetRequest"
+        "declarativeNetRequest",
+        "declarativeNetRequestFeedback",
+        "webNavigation",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://pyrite-scarce-agenda.glitch.me/*",
+        "https://bad.third-party.site/*",
+        "https://privacy-test-pages.glitch.me/"
     ]
 }
