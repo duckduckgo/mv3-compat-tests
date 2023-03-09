@@ -1,0 +1,984 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B3943ECB29B9DA9700987D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3943ECA29B9DA9700987D4F /* AppDelegate.swift */; };
+		B3943ECD29B9DA9700987D4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3943ECC29B9DA9700987D4F /* SceneDelegate.swift */; };
+		B3943ED029B9DA9700987D4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3943ECE29B9DA9700987D4F /* LaunchScreen.storyboard */; };
+		B3943ED329B9DA9700987D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3943ED129B9DA9700987D4F /* Main.storyboard */; };
+		B3943EDC29B9DA9700987D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3943EDB29B9DA9700987D4F /* AppDelegate.swift */; };
+		B3943EDF29B9DA9700987D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3943EDD29B9DA9700987D4F /* Main.storyboard */; };
+		B3943EE629B9DA9700987D4F /* ddg-mv3-test Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B3943EE529B9DA9700987D4F /* ddg-mv3-test Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B3943EF029B9DA9700987D4F /* ddg-mv3-test Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B3943EEF29B9DA9700987D4F /* ddg-mv3-test Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B3943EF629B9DA9700987D4F /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB129B9DA9600987D4F /* Main.html */; };
+		B3943EF729B9DA9700987D4F /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB129B9DA9600987D4F /* Main.html */; };
+		B3943EF829B9DA9700987D4F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB329B9DA9600987D4F /* Icon.png */; };
+		B3943EF929B9DA9700987D4F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB329B9DA9600987D4F /* Icon.png */; };
+		B3943EFA29B9DA9700987D4F /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB429B9DA9600987D4F /* Style.css */; };
+		B3943EFB29B9DA9700987D4F /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB429B9DA9600987D4F /* Style.css */; };
+		B3943EFC29B9DA9700987D4F /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB529B9DA9600987D4F /* Script.js */; };
+		B3943EFD29B9DA9700987D4F /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB529B9DA9600987D4F /* Script.js */; };
+		B3943EFE29B9DA9700987D4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3943EB629B9DA9600987D4F /* ViewController.swift */; };
+		B3943EFF29B9DA9700987D4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3943EB629B9DA9600987D4F /* ViewController.swift */; };
+		B3943F0029B9DA9700987D4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB729B9DA9700987D4F /* Assets.xcassets */; };
+		B3943F0129B9DA9700987D4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB729B9DA9700987D4F /* Assets.xcassets */; };
+		B3943F0229B9DA9700987D4F /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3943EB929B9DA9700987D4F /* SafariWebExtensionHandler.swift */; };
+		B3943F0329B9DA9700987D4F /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3943EB929B9DA9700987D4F /* SafariWebExtensionHandler.swift */; };
+		B3943F0429B9DA9700987D4F /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = B3943EBB29B9DA9700987D4F /* _locales */; };
+		B3943F0529B9DA9700987D4F /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = B3943EBB29B9DA9700987D4F /* _locales */; };
+		B3943F0629B9DA9700987D4F /* images in Resources */ = {isa = PBXBuildFile; fileRef = B3943EBC29B9DA9700987D4F /* images */; };
+		B3943F0729B9DA9700987D4F /* images in Resources */ = {isa = PBXBuildFile; fileRef = B3943EBC29B9DA9700987D4F /* images */; };
+		B3943F0829B9DA9700987D4F /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = B3943EBD29B9DA9700987D4F /* manifest.json */; };
+		B3943F0929B9DA9700987D4F /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = B3943EBD29B9DA9700987D4F /* manifest.json */; };
+		B3943F0A29B9DA9700987D4F /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943EBE29B9DA9700987D4F /* background.js */; };
+		B3943F0B29B9DA9700987D4F /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943EBE29B9DA9700987D4F /* background.js */; };
+		B3943F0C29B9DA9700987D4F /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943EBF29B9DA9700987D4F /* content.js */; };
+		B3943F0D29B9DA9700987D4F /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943EBF29B9DA9700987D4F /* content.js */; };
+		B3943F0E29B9DA9700987D4F /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = B3943EC029B9DA9700987D4F /* popup.html */; };
+		B3943F0F29B9DA9700987D4F /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = B3943EC029B9DA9700987D4F /* popup.html */; };
+		B3943F1029B9DA9700987D4F /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = B3943EC129B9DA9700987D4F /* popup.css */; };
+		B3943F1129B9DA9700987D4F /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = B3943EC129B9DA9700987D4F /* popup.css */; };
+		B3943F1229B9DA9700987D4F /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943EC229B9DA9700987D4F /* popup.js */; };
+		B3943F1329B9DA9700987D4F /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943EC229B9DA9700987D4F /* popup.js */; };
+		B3943F2529B9DC5300987D4F /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = B3943F2429B9DC5300987D4F /* test.html */; };
+		B3943F2629B9DC5300987D4F /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = B3943F2429B9DC5300987D4F /* test.html */; };
+		B3943F2829B9DCBC00987D4F /* vendor in Resources */ = {isa = PBXBuildFile; fileRef = B3943F2729B9DCBC00987D4F /* vendor */; };
+		B3943F2929B9DCBC00987D4F /* vendor in Resources */ = {isa = PBXBuildFile; fileRef = B3943F2729B9DCBC00987D4F /* vendor */; };
+		B3943F2B29B9DE6800987D4F /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943F2A29B9DE6800987D4F /* test.js */; };
+		B3943F2C29B9DE6800987D4F /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943F2A29B9DE6800987D4F /* test.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B3943EE729B9DA9700987D4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3943EAB29B9DA9600987D4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3943EE429B9DA9700987D4F;
+			remoteInfo = "ddg-mv3-test Extension (iOS)";
+		};
+		B3943EF129B9DA9700987D4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3943EAB29B9DA9600987D4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3943EEE29B9DA9700987D4F;
+			remoteInfo = "ddg-mv3-test Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B3943F1929B9DA9700987D4F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B3943EE629B9DA9700987D4F /* ddg-mv3-test Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3943F2029B9DA9700987D4F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B3943EF029B9DA9700987D4F /* ddg-mv3-test Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B3943EB229B9DA9600987D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
+		B3943EB329B9DA9600987D4F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		B3943EB429B9DA9600987D4F /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		B3943EB529B9DA9600987D4F /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		B3943EB629B9DA9600987D4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B3943EB729B9DA9700987D4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B3943EB929B9DA9700987D4F /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		B3943EBB29B9DA9700987D4F /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
+		B3943EBC29B9DA9700987D4F /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		B3943EBD29B9DA9700987D4F /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		B3943EBE29B9DA9700987D4F /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
+		B3943EBF29B9DA9700987D4F /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
+		B3943EC029B9DA9700987D4F /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
+		B3943EC129B9DA9700987D4F /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
+		B3943EC229B9DA9700987D4F /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
+		B3943EC729B9DA9700987D4F /* ddg-mv3-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ddg-mv3-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3943ECA29B9DA9700987D4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B3943ECC29B9DA9700987D4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B3943ECF29B9DA9700987D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B3943ED229B9DA9700987D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B3943ED429B9DA9700987D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3943ED929B9DA9700987D4F /* ddg-mv3-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ddg-mv3-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3943EDB29B9DA9700987D4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B3943EDE29B9DA9700987D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B3943EE029B9DA9700987D4F /* ddg-mv3-test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ddg-mv3-test.entitlements"; sourceTree = "<group>"; };
+		B3943EE529B9DA9700987D4F /* ddg-mv3-test Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ddg-mv3-test Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3943EEA29B9DA9700987D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3943EEF29B9DA9700987D4F /* ddg-mv3-test Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ddg-mv3-test Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3943EF429B9DA9700987D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3943EF529B9DA9700987D4F /* ddg-mv3-test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ddg-mv3-test.entitlements"; sourceTree = "<group>"; };
+		B3943F2429B9DC5300987D4F /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		B3943F2729B9DCBC00987D4F /* vendor */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vendor; sourceTree = "<group>"; };
+		B3943F2A29B9DE6800987D4F /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B3943EC429B9DA9700987D4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3943ED629B9DA9700987D4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3943EE229B9DA9700987D4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3943EEC29B9DA9700987D4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B3943EAA29B9DA9600987D4F = {
+			isa = PBXGroup;
+			children = (
+				B3943EAF29B9DA9600987D4F /* Shared (App) */,
+				B3943EB829B9DA9700987D4F /* Shared (Extension) */,
+				B3943EC929B9DA9700987D4F /* iOS (App) */,
+				B3943EDA29B9DA9700987D4F /* macOS (App) */,
+				B3943EE929B9DA9700987D4F /* iOS (Extension) */,
+				B3943EF329B9DA9700987D4F /* macOS (Extension) */,
+				B3943EC829B9DA9700987D4F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B3943EAF29B9DA9600987D4F /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				B3943EB629B9DA9600987D4F /* ViewController.swift */,
+				B3943EB729B9DA9700987D4F /* Assets.xcassets */,
+				B3943EB029B9DA9600987D4F /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		B3943EB029B9DA9600987D4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B3943EB129B9DA9600987D4F /* Main.html */,
+				B3943EB329B9DA9600987D4F /* Icon.png */,
+				B3943EB429B9DA9600987D4F /* Style.css */,
+				B3943EB529B9DA9600987D4F /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B3943EB829B9DA9700987D4F /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				B3943EB929B9DA9700987D4F /* SafariWebExtensionHandler.swift */,
+				B3943EBA29B9DA9700987D4F /* Resources */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		B3943EBA29B9DA9700987D4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B3943F2A29B9DE6800987D4F /* test.js */,
+				B3943F2729B9DCBC00987D4F /* vendor */,
+				B3943F2429B9DC5300987D4F /* test.html */,
+				B3943EBB29B9DA9700987D4F /* _locales */,
+				B3943EBC29B9DA9700987D4F /* images */,
+				B3943EBD29B9DA9700987D4F /* manifest.json */,
+				B3943EBE29B9DA9700987D4F /* background.js */,
+				B3943EBF29B9DA9700987D4F /* content.js */,
+				B3943EC029B9DA9700987D4F /* popup.html */,
+				B3943EC129B9DA9700987D4F /* popup.css */,
+				B3943EC229B9DA9700987D4F /* popup.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B3943EC829B9DA9700987D4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B3943EC729B9DA9700987D4F /* ddg-mv3-test.app */,
+				B3943ED929B9DA9700987D4F /* ddg-mv3-test.app */,
+				B3943EE529B9DA9700987D4F /* ddg-mv3-test Extension.appex */,
+				B3943EEF29B9DA9700987D4F /* ddg-mv3-test Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B3943EC929B9DA9700987D4F /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				B3943ECA29B9DA9700987D4F /* AppDelegate.swift */,
+				B3943ECC29B9DA9700987D4F /* SceneDelegate.swift */,
+				B3943ECE29B9DA9700987D4F /* LaunchScreen.storyboard */,
+				B3943ED129B9DA9700987D4F /* Main.storyboard */,
+				B3943ED429B9DA9700987D4F /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		B3943EDA29B9DA9700987D4F /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				B3943EDB29B9DA9700987D4F /* AppDelegate.swift */,
+				B3943EDD29B9DA9700987D4F /* Main.storyboard */,
+				B3943EE029B9DA9700987D4F /* ddg-mv3-test.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		B3943EE929B9DA9700987D4F /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				B3943EEA29B9DA9700987D4F /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		B3943EF329B9DA9700987D4F /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				B3943EF429B9DA9700987D4F /* Info.plist */,
+				B3943EF529B9DA9700987D4F /* ddg-mv3-test.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B3943EC629B9DA9700987D4F /* ddg-mv3-test (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3943F1A29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test (iOS)" */;
+			buildPhases = (
+				B3943EC329B9DA9700987D4F /* Sources */,
+				B3943EC429B9DA9700987D4F /* Frameworks */,
+				B3943EC529B9DA9700987D4F /* Resources */,
+				B3943F1929B9DA9700987D4F /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3943EE829B9DA9700987D4F /* PBXTargetDependency */,
+			);
+			name = "ddg-mv3-test (iOS)";
+			productName = "ddg-mv3-test (iOS)";
+			productReference = B3943EC729B9DA9700987D4F /* ddg-mv3-test.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B3943ED829B9DA9700987D4F /* ddg-mv3-test (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3943F2129B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test (macOS)" */;
+			buildPhases = (
+				B3943ED529B9DA9700987D4F /* Sources */,
+				B3943ED629B9DA9700987D4F /* Frameworks */,
+				B3943ED729B9DA9700987D4F /* Resources */,
+				B3943F2029B9DA9700987D4F /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3943EF229B9DA9700987D4F /* PBXTargetDependency */,
+			);
+			name = "ddg-mv3-test (macOS)";
+			productName = "ddg-mv3-test (macOS)";
+			productReference = B3943ED929B9DA9700987D4F /* ddg-mv3-test.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B3943EE429B9DA9700987D4F /* ddg-mv3-test Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3943F1629B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test Extension (iOS)" */;
+			buildPhases = (
+				B3943EE129B9DA9700987D4F /* Sources */,
+				B3943EE229B9DA9700987D4F /* Frameworks */,
+				B3943EE329B9DA9700987D4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ddg-mv3-test Extension (iOS)";
+			productName = "ddg-mv3-test Extension (iOS)";
+			productReference = B3943EE529B9DA9700987D4F /* ddg-mv3-test Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B3943EEE29B9DA9700987D4F /* ddg-mv3-test Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3943F1D29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test Extension (macOS)" */;
+			buildPhases = (
+				B3943EEB29B9DA9700987D4F /* Sources */,
+				B3943EEC29B9DA9700987D4F /* Frameworks */,
+				B3943EED29B9DA9700987D4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ddg-mv3-test Extension (macOS)";
+			productName = "ddg-mv3-test Extension (macOS)";
+			productReference = B3943EEF29B9DA9700987D4F /* ddg-mv3-test Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B3943EAB29B9DA9600987D4F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					B3943EC629B9DA9700987D4F = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					B3943ED829B9DA9700987D4F = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					B3943EE429B9DA9700987D4F = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					B3943EEE29B9DA9700987D4F = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = B3943EAE29B9DA9600987D4F /* Build configuration list for PBXProject "ddg-mv3-test" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B3943EAA29B9DA9600987D4F;
+			productRefGroup = B3943EC829B9DA9700987D4F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B3943EC629B9DA9700987D4F /* ddg-mv3-test (iOS) */,
+				B3943ED829B9DA9700987D4F /* ddg-mv3-test (macOS) */,
+				B3943EE429B9DA9700987D4F /* ddg-mv3-test Extension (iOS) */,
+				B3943EEE29B9DA9700987D4F /* ddg-mv3-test Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B3943EC529B9DA9700987D4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3943EF829B9DA9700987D4F /* Icon.png in Resources */,
+				B3943ED029B9DA9700987D4F /* LaunchScreen.storyboard in Resources */,
+				B3943EF629B9DA9700987D4F /* Main.html in Resources */,
+				B3943EFC29B9DA9700987D4F /* Script.js in Resources */,
+				B3943F0029B9DA9700987D4F /* Assets.xcassets in Resources */,
+				B3943ED329B9DA9700987D4F /* Main.storyboard in Resources */,
+				B3943EFA29B9DA9700987D4F /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3943ED729B9DA9700987D4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3943EF929B9DA9700987D4F /* Icon.png in Resources */,
+				B3943EFB29B9DA9700987D4F /* Style.css in Resources */,
+				B3943EDF29B9DA9700987D4F /* Main.storyboard in Resources */,
+				B3943EFD29B9DA9700987D4F /* Script.js in Resources */,
+				B3943F0129B9DA9700987D4F /* Assets.xcassets in Resources */,
+				B3943EF729B9DA9700987D4F /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3943EE329B9DA9700987D4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3943F2829B9DCBC00987D4F /* vendor in Resources */,
+				B3943F0A29B9DA9700987D4F /* background.js in Resources */,
+				B3943F1029B9DA9700987D4F /* popup.css in Resources */,
+				B3943F0E29B9DA9700987D4F /* popup.html in Resources */,
+				B3943F0629B9DA9700987D4F /* images in Resources */,
+				B3943F0829B9DA9700987D4F /* manifest.json in Resources */,
+				B3943F2B29B9DE6800987D4F /* test.js in Resources */,
+				B3943F0429B9DA9700987D4F /* _locales in Resources */,
+				B3943F0C29B9DA9700987D4F /* content.js in Resources */,
+				B3943F1229B9DA9700987D4F /* popup.js in Resources */,
+				B3943F2529B9DC5300987D4F /* test.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3943EED29B9DA9700987D4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3943F2929B9DCBC00987D4F /* vendor in Resources */,
+				B3943F0B29B9DA9700987D4F /* background.js in Resources */,
+				B3943F1129B9DA9700987D4F /* popup.css in Resources */,
+				B3943F0F29B9DA9700987D4F /* popup.html in Resources */,
+				B3943F0729B9DA9700987D4F /* images in Resources */,
+				B3943F0929B9DA9700987D4F /* manifest.json in Resources */,
+				B3943F2C29B9DE6800987D4F /* test.js in Resources */,
+				B3943F0529B9DA9700987D4F /* _locales in Resources */,
+				B3943F0D29B9DA9700987D4F /* content.js in Resources */,
+				B3943F1329B9DA9700987D4F /* popup.js in Resources */,
+				B3943F2629B9DC5300987D4F /* test.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B3943EC329B9DA9700987D4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3943EFE29B9DA9700987D4F /* ViewController.swift in Sources */,
+				B3943ECB29B9DA9700987D4F /* AppDelegate.swift in Sources */,
+				B3943ECD29B9DA9700987D4F /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3943ED529B9DA9700987D4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3943EFF29B9DA9700987D4F /* ViewController.swift in Sources */,
+				B3943EDC29B9DA9700987D4F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3943EE129B9DA9700987D4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3943F0229B9DA9700987D4F /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3943EEB29B9DA9700987D4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3943F0329B9DA9700987D4F /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B3943EE829B9DA9700987D4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3943EE429B9DA9700987D4F /* ddg-mv3-test Extension (iOS) */;
+			targetProxy = B3943EE729B9DA9700987D4F /* PBXContainerItemProxy */;
+		};
+		B3943EF229B9DA9700987D4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3943EEE29B9DA9700987D4F /* ddg-mv3-test Extension (macOS) */;
+			targetProxy = B3943EF129B9DA9700987D4F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B3943EB129B9DA9600987D4F /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3943EB229B9DA9600987D4F /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		B3943ECE29B9DA9700987D4F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3943ECF29B9DA9700987D4F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B3943ED129B9DA9700987D4F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3943ED229B9DA9700987D4F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B3943EDD29B9DA9700987D4F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3943EDE29B9DA9700987D4F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B3943F1429B9DA9700987D4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B3943F1529B9DA9700987D4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		B3943F1729B9DA9700987D4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ddg-mv3-test Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test.Extension";
+				PRODUCT_NAME = "ddg-mv3-test Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B3943F1829B9DA9700987D4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ddg-mv3-test Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test.Extension";
+				PRODUCT_NAME = "ddg-mv3-test Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B3943F1B29B9DA9700987D4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ddg-mv3-test";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test";
+				PRODUCT_NAME = "ddg-mv3-test";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B3943F1C29B9DA9700987D4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ddg-mv3-test";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test";
+				PRODUCT_NAME = "ddg-mv3-test";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B3943F1E29B9DA9700987D4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/ddg-mv3-test.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ddg-mv3-test Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test.Extension";
+				PRODUCT_NAME = "ddg-mv3-test Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B3943F1F29B9DA9700987D4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/ddg-mv3-test.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ddg-mv3-test Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test.Extension";
+				PRODUCT_NAME = "ddg-mv3-test Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B3943F2229B9DA9700987D4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/ddg-mv3-test.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ddg-mv3-test";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test";
+				PRODUCT_NAME = "ddg-mv3-test";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B3943F2329B9DA9700987D4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/ddg-mv3-test.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ddg-mv3-test";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test";
+				PRODUCT_NAME = "ddg-mv3-test";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B3943EAE29B9DA9600987D4F /* Build configuration list for PBXProject "ddg-mv3-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3943F1429B9DA9700987D4F /* Debug */,
+				B3943F1529B9DA9700987D4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3943F1629B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3943F1729B9DA9700987D4F /* Debug */,
+				B3943F1829B9DA9700987D4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3943F1A29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3943F1B29B9DA9700987D4F /* Debug */,
+				B3943F1C29B9DA9700987D4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3943F1D29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3943F1E29B9DA9700987D4F /* Debug */,
+				B3943F1F29B9DA9700987D4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3943F2129B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3943F2229B9DA9700987D4F /* Debug */,
+				B3943F2329B9DA9700987D4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B3943EAB29B9DA9600987D4F /* Project object */;
+}
