@@ -1,5 +1,5 @@
 /** global mocha, chai */
-import { loadPageAndWaitForLoad } from './utils.js'
+import { loadPageAndWaitForLoad } from "./utils.js";
 const { expect } = chai;
 
 const testUrl =
@@ -23,7 +23,7 @@ function getExecuteScriptResults(result) {
 }
 
 async function runTestPageTest(testPageUrl, waitFor) {
-  const tab = await loadPageAndWaitForLoad(testPageUrl)
+  const tab = await loadPageAndWaitForLoad(testPageUrl);
   while (true) {
     const result = await getTestPageResults(tab.id);
     if (result && waitFor(result)) {
@@ -48,11 +48,23 @@ async function getTestPageResults(tabId) {
 }
 
 describe("chrome.declarativeNetRequest", () => {
+  afterEach(async () => {
+    const rules = await chrome.declarativeNetRequest.getDynamicRules();
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: rules.map((r) => r.id),
+    });
+    const rulesets = await chrome.declarativeNetRequest.getEnabledRulesets();
+    await chrome.declarativeNetRequest.updateEnabledRulesets({
+      disableRulesetIds: rulesets,
+    });
+  });
+
   it("urlFilter with anchor blocks requests on matched domains", async () => {
     await dnrTest(
       [
         {
           id: 1,
+          priority: 1,
           action: {
             type: "block",
           },
@@ -69,10 +81,25 @@ describe("chrome.declarativeNetRequest", () => {
               (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
             )
         );
-        console.log(result);
         expect(result[0].status).to.not.equal("loaded");
       }
     );
+  });
+
+  it("enabling static ruleset with anchor block rule blocks requests", async () => {
+    await chrome.declarativeNetRequest.updateEnabledRulesets({
+      enableRulesetIds: ["test_rules_blocking"],
+    });
+    await dnrTest([], async () => {
+      const result = await runTestPageTest(
+        "https://privacy-test-pages.glitch.me/privacy-protections/request-blocking/?run",
+        (results) =>
+          results.find(
+            (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+          )
+      );
+      expect(result[0].status).to.not.equal("loaded");
+    });
   });
 
   it("requestDomains blocks requests on matched domains", async () => {
@@ -80,6 +107,7 @@ describe("chrome.declarativeNetRequest", () => {
       [
         {
           id: 1,
+          priority: 1,
           action: {
             type: "block",
           },
@@ -96,10 +124,84 @@ describe("chrome.declarativeNetRequest", () => {
               (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
             )
         );
-        console.log(result);
         expect(
           result.find((r) => r.id === "xmlhttprequest").status
         ).to.not.equal("loaded");
+      }
+    );
+  });
+
+  it("allowAllRequests disables blocking rules when document URL matches", async () => {
+    await dnrTest(
+      [
+        {
+          id: 1,
+          priority: 1,
+          action: {
+            type: "block",
+          },
+          condition: {
+            urlFilter: "||bad.third-party.site/*",
+          },
+        },
+        {
+          id: 2,
+          priority: 2,
+          action: {
+            type: "allowAllRequests",
+          },
+          condition: {
+            urlFilter: "||privacy-test-pages.glitch.me/",
+            resourceTypes: ["main_frame"],
+          },
+        },
+      ],
+      async () => {
+        const result = await runTestPageTest(
+          "https://privacy-test-pages.glitch.me/privacy-protections/request-blocking/?run",
+          (results) =>
+            results.find(
+              (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+            )
+        );
+        console.log(result);
+        expect(result.find((r) => r.id === "xmlhttprequest").status).to.equal(
+          "loaded"
+        );
+      }
+    );
+  });
+
+  it("allowAllRequests disables static blocking rules when document URL matches", async () => {
+    await chrome.declarativeNetRequest.updateEnabledRulesets({
+      enableRulesetIds: ["test_rules_blocking"],
+    });
+    await dnrTest(
+      [
+        {
+          id: 2,
+          priority: 2,
+          action: {
+            type: "allowAllRequests",
+          },
+          condition: {
+            urlFilter: "||privacy-test-pages.glitch.me/",
+            resourceTypes: ["main_frame"],
+          },
+        },
+      ],
+      async () => {
+        const result = await runTestPageTest(
+          "https://privacy-test-pages.glitch.me/privacy-protections/request-blocking/?run",
+          (results) =>
+            results.find(
+              (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+            )
+        );
+        console.log(result);
+        expect(result.find((r) => r.id === "xmlhttprequest").status).to.equal(
+          "loaded"
+        );
       }
     );
   });
