@@ -1,8 +1,6 @@
 /** global mocha, chai */
-
+import { loadPageAndWaitForLoad } from './utils.js'
 const { expect } = chai;
-mocha.setup('bdd');
-mocha.timeout(10000);
 
 const testUrl =
   "https://bad.third-party.site/privacy-protections/request-blocking/block-me/script.js";
@@ -25,18 +23,7 @@ function getExecuteScriptResults(result) {
 }
 
 async function runTestPageTest(testPageUrl, waitFor) {
-  let tab;
-  const tabReady = new Promise((resolve) => {
-    const onUpdated = (details) => {
-      if (details.tabId === tab.id && details.frameId === 0) {
-        resolve();
-        chrome.tabs.onUpdated.removeListener(onUpdated);
-      }
-    };
-    chrome.webNavigation.onDOMContentLoaded.addListener(onUpdated);
-  });
-  tab = await chrome.tabs.create({ url: testPageUrl, active: false });
-  await tabReady;
+  const tab = await loadPageAndWaitForLoad(testPageUrl)
   while (true) {
     const result = await getTestPageResults(tab.id);
     if (result && waitFor(result)) {
@@ -60,23 +47,8 @@ async function getTestPageResults(tabId) {
   return getExecuteScriptResults(result)[0];
 }
 
-describe("API scopes", () => {
-  it("chrome is present in extension pages", () => {
-    chai.expect(typeof chrome).to.equal("object");
-  });
-
-  const apis = ["tabs", "declarativeNetRequest"];
-
-  apis.forEach((api) => {
-    it(`chrome.${api} is present on extension pages`, () => {
-      chai.expect(typeof chrome[api]).to.equal("object");
-    });
-  });
-});
-
 describe("chrome.declarativeNetRequest", () => {
-
-  it("can block requests", async () => {
+  it("urlFilter with anchor blocks requests on matched domains", async () => {
     await dnrTest(
       [
         {
@@ -103,7 +75,7 @@ describe("chrome.declarativeNetRequest", () => {
     );
   });
 
-  it("supports requestDomains option", async () => {
+  it("requestDomains blocks requests on matched domains", async () => {
     await dnrTest(
       [
         {
@@ -125,7 +97,9 @@ describe("chrome.declarativeNetRequest", () => {
             )
         );
         console.log(result);
-        expect(result[0].status).to.not.equal("loaded");
+        expect(
+          result.find((r) => r.id === "xmlhttprequest").status
+        ).to.not.equal("loaded");
       }
     );
   });
