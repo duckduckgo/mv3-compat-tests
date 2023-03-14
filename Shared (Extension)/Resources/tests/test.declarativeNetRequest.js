@@ -131,7 +131,7 @@ describe("chrome.declarativeNetRequest", () => {
     });
   });
 
-  it("requestDomains blocks requests on matched domains", async () => {
+  it("requestDomains condition triggers on matched domains", async () => {
     await dnrTest(
       [
         {
@@ -507,5 +507,168 @@ describe("chrome.declarativeNetRequest", () => {
       }
       await new Promise((resolve) => setTimeout(resolve, 100));
     }
+  });
+
+  it("'initiatorDomains' condition limits matches to requests initiated by matching domain", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 11,
+          priority: 1,
+          action: {
+            type: "block",
+          },
+          condition: {
+            urlFilter: "||bad.third-party.site/*",
+            initiatorDomains: ["privacy-test-pages.glitch.me"],
+          },
+        },
+      ],
+    });
+    const testBlocked = runTestPageTest(
+      "https://privacy-test-pages.glitch.me/privacy-protections/request-blocking/?run",
+      (results) =>
+        results.find(
+          (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+        )
+    ).then((result) => {
+      return expect(result[0].status).to.not.equal("loaded");
+    });
+
+    const testAllowed = runTestPageTest(
+      "https://good.third-party.site/privacy-protections/request-blocking/?run",
+      (results) =>
+        results.find(
+          (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+        )
+    ).then((result) => {
+      expect(result[0].status, "initiatorDomains value was ignored").to.equal(
+        "loaded"
+      );
+    });
+    await Promise.all([testBlocked, testAllowed]);
+  });
+
+  it("'initiatorDomains' condition list matches initators' subdomains", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 11,
+          priority: 1,
+          action: {
+            type: "block",
+          },
+          condition: {
+            urlFilter: "||bad.third-party.site/*",
+            initiatorDomains: ["glitch.me"],
+          },
+        },
+      ],
+    });
+    const testBlocked = runTestPageTest(
+      "https://privacy-test-pages.glitch.me/privacy-protections/request-blocking/?run",
+      (results) =>
+        results.find(
+          (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+        )
+    ).then((result) => {
+      return expect(result[0].status).to.not.equal("loaded");
+    });
+
+    const testAllowed = runTestPageTest(
+      "https://good.third-party.site/privacy-protections/request-blocking/?run",
+      (results) =>
+        results.find(
+          (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+        )
+    ).then((result) => {
+      expect(result[0].status, "initiatorDomains value was ignored").to.equal(
+        "loaded"
+      );
+    });
+    await Promise.all([testBlocked, testAllowed]);
+  });
+
+  it("'domains' condition limits matches to requests initiated by matching domain", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 11,
+          priority: 1,
+          action: {
+            type: "block",
+          },
+          condition: {
+            urlFilter: "||bad.third-party.site/*",
+            domains: ["privacy-test-pages.glitch.me"],
+          },
+        },
+      ],
+    });
+    const testBlocked = runTestPageTest(
+      "https://privacy-test-pages.glitch.me/privacy-protections/request-blocking/?run",
+      (results) =>
+        results.find(
+          (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+        )
+    ).then((result) => {
+      return expect(result[0].status).to.not.equal("loaded");
+    });
+
+    const testAllowed = runTestPageTest(
+      "https://good.third-party.site/privacy-protections/request-blocking/?run",
+      (results) =>
+        results.find(
+          (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+        )
+    ).then((result) => {
+      expect(result[0].status, "initiatorDomains value was ignored").to.equal(
+        "loaded"
+      );
+    });
+    await Promise.all([testBlocked, testAllowed]);
+  });
+
+  it("'domains' condition list matches initators' subdomains", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 11,
+          priority: 1,
+          action: {
+            type: "block",
+          },
+          condition: {
+            urlFilter: "||bad.third-party.site/*",
+            domains: ["glitch.me"],
+          },
+        },
+      ],
+    });
+    const testBlocked = runTestPageTest(
+      "https://privacy-test-pages.glitch.me/privacy-protections/request-blocking/?run",
+      (results) =>
+        results.find(
+          (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+        )
+    ).then((result) => {
+      return expect(
+        result[0].status,
+        "rule did not trigger with matching initiator"
+      ).to.not.equal("loaded");
+    });
+
+    const testAllowed = runTestPageTest(
+      "https://good.third-party.site/privacy-protections/request-blocking/?run",
+      (results) =>
+        results.find(
+          (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+        )
+    ).then((result) => {
+      expect(result[0].status, "initiatorDomains value was ignored").to.equal(
+        "loaded"
+      );
+    });
+    await Promise.all([testBlocked, testAllowed]);
   });
 });
