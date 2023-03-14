@@ -41,17 +41,31 @@ async function runTestPageTest(testPageUrl, waitFor) {
   }
 }
 
-async function getTestPageResults(tabId) {
-  const result = await chrome.scripting.executeScript({
+async function executeScriptWorkaround(tabId, func, world = 'ISOLATED') {
+// As executeScript doesn't return results properly on some tested platforms, this is a workaround
+  // that dumps the test result into the url hash. We can then read that back out with the 
+  // chrome.tabs API
+  await chrome.scripting.executeScript({
     target: {
       tabId,
     },
-    world: "MAIN",
-    func: () => {
-      return results?.results;
-    },
+    world,
+    func,
   });
-  return getExecuteScriptResults(result)[0];
+  const hash = new URL((await chrome.tabs.get(tabId)).url).hash
+  if (hash.length > 0) {
+    return decodeURIComponent(hash.slice(1));
+  }
+  return null;
+}
+
+async function getTestPageResults(tabId) {
+  const result = await executeScriptWorkaround(tabId, () => {
+    document.location.hash = JSON.stringify(results?.results)
+  }, 'MAIN')
+  if (result) {
+    return JSON.parse(result)
+  }
 }
 
 describe("chrome.declarativeNetRequest", () => {
@@ -264,17 +278,13 @@ describe("chrome.declarativeNetRequest", () => {
     const tab = await loadPageAndWaitForLoad(
       "https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-img.html"
     );
-    const imgWidthResult = await chrome.scripting.executeScript({
-      target: {
-        tabId: tab.id,
-      },
-      func: () => {
-        return document.querySelector("img").width;
-      },
-    });
+    const imgWidthResult = await executeScriptWorkaround(tab.id, () => {
+      document.location.hash = document.querySelector("img").width;
+    })
+    
     chrome.tabs.remove(tab.id);
     // if image is 48px then our replacement image was loaded
-    expect(getExecuteScriptResults(imgWidthResult)[0]).to.equal(48);
+    expect(parseInt(imgWidthResult, 10)).to.equal(48);
   });
 
   it("redirect to extension image url with explicit urlFilter", async () => {
@@ -298,17 +308,12 @@ describe("chrome.declarativeNetRequest", () => {
     const tab = await loadPageAndWaitForLoad(
       "https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-img.html"
     );
-    const imgWidthResult = await chrome.scripting.executeScript({
-      target: {
-        tabId: tab.id,
-      },
-      func: () => {
-        return document.querySelector("img").width;
-      },
-    });
+    const imgWidthResult = await executeScriptWorkaround(tab.id, () => {
+      document.location.hash = document.querySelector("img").width;
+    })
     chrome.tabs.remove(tab.id);
     // if image is 48px then our replacement image was loaded
-    expect(getExecuteScriptResults(imgWidthResult)[0]).to.equal(48);
+    expect(parseInt(imgWidthResult, 10)).to.equal(48);
   });
 
   it("redirect to extension script url with anchored urlFilter", async () => {
@@ -332,18 +337,11 @@ describe("chrome.declarativeNetRequest", () => {
     const tab = await loadPageAndWaitForLoad(
       "https://privacy-test-pages.glitch.me/tracker-reporting/1major-with-surrogate.html"
     );
-    const surrogateScriptTest = await chrome.scripting.executeScript({
-      target: {
-        tabId: tab.id,
-      },
-      injectImmediately: false,
-      world: "MAIN",
-      func: () => {
-        return window.surrogate_test;
-      },
-    });
+    const surrogateScriptTest = await executeScriptWorkaround(tab.id, () => {
+      document.location.hash = window.surrogate_test
+    }, "MAIN")
     chrome.tabs.remove(tab.id);
-    expect(getExecuteScriptResults(surrogateScriptTest)[0]).to.equal("success");
+    expect(surrogateScriptTest).to.equal("success");
   });
 
   it("queryTransform can remove search parameters", async () => {
