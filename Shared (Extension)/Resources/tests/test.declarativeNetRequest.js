@@ -26,7 +26,7 @@ async function dnrTest(addRules, test) {
  * @returns
  */
 function getExecuteScriptResults(result) {
-  return result.map((r) => (r?.documentId ? r.result : r));
+  return result.map((r) => (r.hasOwnProperty('frameId') ? r.result : r));
 }
 
 async function runTestPageTest(testPageUrl, waitFor) {
@@ -486,7 +486,7 @@ describe("chrome.declarativeNetRequest", () => {
         },
       ],
     });
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 250));
     await chrome.scripting.executeScript({
       target: {
         tabId: tab.id,

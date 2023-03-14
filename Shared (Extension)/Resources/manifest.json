@@ -61,7 +61,6 @@
                 "/images/icon-48.png",
                 "/surrogate.js"
             ],
-            "use_dynamic_url": true,
             "matches": [
                 "https://privacy-test-pages.glitch.me/*"
             ]

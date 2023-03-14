@@ -53,6 +53,10 @@
 		B3943F2F29BA11CE00987D4F /* tests in Resources */ = {isa = PBXBuildFile; fileRef = B3943F2D29BA11CE00987D4F /* tests */; };
 		B3943F3129BF278500987D4F /* content-script.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943F3029BF278500987D4F /* content-script.js */; };
 		B3943F3229BF278500987D4F /* content-script.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943F3029BF278500987D4F /* content-script.js */; };
+		B3943F3529C1034600987D4F /* surrogate.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943F3329C1034600987D4F /* surrogate.js */; };
+		B3943F3629C1034600987D4F /* surrogate.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943F3329C1034600987D4F /* surrogate.js */; };
+		B3943F3729C1034600987D4F /* test_rules_blocking.json in Resources */ = {isa = PBXBuildFile; fileRef = B3943F3429C1034600987D4F /* test_rules_blocking.json */; };
+		B3943F3829C1034600987D4F /* test_rules_blocking.json in Resources */ = {isa = PBXBuildFile; fileRef = B3943F3429C1034600987D4F /* test_rules_blocking.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +136,8 @@
 		B3943F2729B9DCBC00987D4F /* vendor */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vendor; sourceTree = "<group>"; };
 		B3943F2D29BA11CE00987D4F /* tests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tests; sourceTree = "<group>"; };
 		B3943F3029BF278500987D4F /* content-script.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "content-script.js"; sourceTree = "<group>"; };
+		B3943F3329C1034600987D4F /* surrogate.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = surrogate.js; sourceTree = "<group>"; };
+		B3943F3429C1034600987D4F /* test_rules_blocking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_rules_blocking.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +218,8 @@
 		B3943EBA29B9DA9700987D4F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3943F3329C1034600987D4F /* surrogate.js */,
+				B3943F3429C1034600987D4F /* test_rules_blocking.json */,
 				B3943F3029BF278500987D4F /* content-script.js */,
 				B3943F2D29BA11CE00987D4F /* tests */,
 				B3943F2729B9DCBC00987D4F /* vendor */,
@@ -436,6 +444,8 @@
 				B3943F1029B9DA9700987D4F /* popup.css in Resources */,
 				B3943F0E29B9DA9700987D4F /* popup.html in Resources */,
 				B3943F3129BF278500987D4F /* content-script.js in Resources */,
+				B3943F3729C1034600987D4F /* test_rules_blocking.json in Resources */,
+				B3943F3529C1034600987D4F /* surrogate.js in Resources */,
 				B3943F0629B9DA9700987D4F /* images in Resources */,
 				B3943F0829B9DA9700987D4F /* manifest.json in Resources */,
 				B3943F0429B9DA9700987D4F /* _locales in Resources */,
@@ -455,6 +465,8 @@
 				B3943F1129B9DA9700987D4F /* popup.css in Resources */,
 				B3943F0F29B9DA9700987D4F /* popup.html in Resources */,
 				B3943F3229BF278500987D4F /* content-script.js in Resources */,
+				B3943F3829C1034600987D4F /* test_rules_blocking.json in Resources */,
+				B3943F3629C1034600987D4F /* surrogate.js in Resources */,
 				B3943F0729B9DA9700987D4F /* images in Resources */,
 				B3943F0929B9DA9700987D4F /* manifest.json in Resources */,
 				B3943F0529B9DA9700987D4F /* _locales in Resources */,
@@ -825,7 +837,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test.Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.mv3-compat-tests.Extension";
 				PRODUCT_NAME = "mv3-compat-tests Extension";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -857,7 +869,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test.Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.mv3-compat-tests.Extension";
 				PRODUCT_NAME = "mv3-compat-tests Extension";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
