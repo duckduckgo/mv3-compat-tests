@@ -13,8 +13,8 @@
 		B3943ED329B9DA9700987D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3943ED129B9DA9700987D4F /* Main.storyboard */; };
 		B3943EDC29B9DA9700987D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3943EDB29B9DA9700987D4F /* AppDelegate.swift */; };
 		B3943EDF29B9DA9700987D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3943EDD29B9DA9700987D4F /* Main.storyboard */; };
-		B3943EE629B9DA9700987D4F /* ddg-mv3-test Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B3943EE529B9DA9700987D4F /* ddg-mv3-test Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B3943EF029B9DA9700987D4F /* ddg-mv3-test Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B3943EEF29B9DA9700987D4F /* ddg-mv3-test Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B3943EE629B9DA9700987D4F /* mv3-compat-tests Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B3943EE529B9DA9700987D4F /* mv3-compat-tests Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B3943EF029B9DA9700987D4F /* mv3-compat-tests Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B3943EEF29B9DA9700987D4F /* mv3-compat-tests Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B3943EF629B9DA9700987D4F /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB129B9DA9600987D4F /* Main.html */; };
 		B3943EF729B9DA9700987D4F /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB129B9DA9600987D4F /* Main.html */; };
 		B3943EF829B9DA9700987D4F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3943EB329B9DA9600987D4F /* Icon.png */; };
@@ -79,7 +79,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B3943EE629B9DA9700987D4F /* ddg-mv3-test Extension.appex in Embed Foundation Extensions */,
+				B3943EE629B9DA9700987D4F /* mv3-compat-tests Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,7 +90,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B3943EF029B9DA9700987D4F /* ddg-mv3-test Extension.appex in Embed Foundation Extensions */,
+				B3943EF029B9DA9700987D4F /* mv3-compat-tests Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,19 +113,19 @@
 		B3943EC029B9DA9700987D4F /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
 		B3943EC129B9DA9700987D4F /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
 		B3943EC229B9DA9700987D4F /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
-		B3943EC729B9DA9700987D4F /* ddg-mv3-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ddg-mv3-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3943EC729B9DA9700987D4F /* mv3-compat-tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mv3-compat-tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3943ECA29B9DA9700987D4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3943ECC29B9DA9700987D4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B3943ECF29B9DA9700987D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3943ED229B9DA9700987D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3943ED429B9DA9700987D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3943ED929B9DA9700987D4F /* ddg-mv3-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ddg-mv3-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3943ED929B9DA9700987D4F /* mv3-compat-tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mv3-compat-tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3943EDB29B9DA9700987D4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3943EDE29B9DA9700987D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3943EE029B9DA9700987D4F /* ddg-mv3-test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ddg-mv3-test.entitlements"; sourceTree = "<group>"; };
-		B3943EE529B9DA9700987D4F /* ddg-mv3-test Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ddg-mv3-test Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3943EE529B9DA9700987D4F /* mv3-compat-tests Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "mv3-compat-tests Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3943EEA29B9DA9700987D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3943EEF29B9DA9700987D4F /* ddg-mv3-test Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ddg-mv3-test Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3943EEF29B9DA9700987D4F /* mv3-compat-tests Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "mv3-compat-tests Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3943EF429B9DA9700987D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3943EF529B9DA9700987D4F /* ddg-mv3-test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ddg-mv3-test.entitlements"; sourceTree = "<group>"; };
 		B3943F2429B9DC5300987D4F /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
@@ -231,10 +231,10 @@
 		B3943EC829B9DA9700987D4F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3943EC729B9DA9700987D4F /* ddg-mv3-test.app */,
-				B3943ED929B9DA9700987D4F /* ddg-mv3-test.app */,
-				B3943EE529B9DA9700987D4F /* ddg-mv3-test Extension.appex */,
-				B3943EEF29B9DA9700987D4F /* ddg-mv3-test Extension.appex */,
+				B3943EC729B9DA9700987D4F /* mv3-compat-tests.app */,
+				B3943ED929B9DA9700987D4F /* mv3-compat-tests.app */,
+				B3943EE529B9DA9700987D4F /* mv3-compat-tests Extension.appex */,
+				B3943EEF29B9DA9700987D4F /* mv3-compat-tests Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,9 +281,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B3943EC629B9DA9700987D4F /* ddg-mv3-test (iOS) */ = {
+		B3943EC629B9DA9700987D4F /* mv3-compat-tests (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3943F1A29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test (iOS)" */;
+			buildConfigurationList = B3943F1A29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "mv3-compat-tests (iOS)" */;
 			buildPhases = (
 				B3943EC329B9DA9700987D4F /* Sources */,
 				B3943EC429B9DA9700987D4F /* Frameworks */,
@@ -295,14 +295,14 @@
 			dependencies = (
 				B3943EE829B9DA9700987D4F /* PBXTargetDependency */,
 			);
-			name = "ddg-mv3-test (iOS)";
+			name = "mv3-compat-tests (iOS)";
 			productName = "ddg-mv3-test (iOS)";
-			productReference = B3943EC729B9DA9700987D4F /* ddg-mv3-test.app */;
+			productReference = B3943EC729B9DA9700987D4F /* mv3-compat-tests.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B3943ED829B9DA9700987D4F /* ddg-mv3-test (macOS) */ = {
+		B3943ED829B9DA9700987D4F /* mv3-compat-tests (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3943F2129B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test (macOS)" */;
+			buildConfigurationList = B3943F2129B9DA9700987D4F /* Build configuration list for PBXNativeTarget "mv3-compat-tests (macOS)" */;
 			buildPhases = (
 				B3943ED529B9DA9700987D4F /* Sources */,
 				B3943ED629B9DA9700987D4F /* Frameworks */,
@@ -314,14 +314,14 @@
 			dependencies = (
 				B3943EF229B9DA9700987D4F /* PBXTargetDependency */,
 			);
-			name = "ddg-mv3-test (macOS)";
+			name = "mv3-compat-tests (macOS)";
 			productName = "ddg-mv3-test (macOS)";
-			productReference = B3943ED929B9DA9700987D4F /* ddg-mv3-test.app */;
+			productReference = B3943ED929B9DA9700987D4F /* mv3-compat-tests.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B3943EE429B9DA9700987D4F /* ddg-mv3-test Extension (iOS) */ = {
+		B3943EE429B9DA9700987D4F /* mv3-compat-tests Extension (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3943F1629B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test Extension (iOS)" */;
+			buildConfigurationList = B3943F1629B9DA9700987D4F /* Build configuration list for PBXNativeTarget "mv3-compat-tests Extension (iOS)" */;
 			buildPhases = (
 				B3943EE129B9DA9700987D4F /* Sources */,
 				B3943EE229B9DA9700987D4F /* Frameworks */,
@@ -331,14 +331,14 @@
 			);
 			dependencies = (
 			);
-			name = "ddg-mv3-test Extension (iOS)";
+			name = "mv3-compat-tests Extension (iOS)";
 			productName = "ddg-mv3-test Extension (iOS)";
-			productReference = B3943EE529B9DA9700987D4F /* ddg-mv3-test Extension.appex */;
+			productReference = B3943EE529B9DA9700987D4F /* mv3-compat-tests Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		B3943EEE29B9DA9700987D4F /* ddg-mv3-test Extension (macOS) */ = {
+		B3943EEE29B9DA9700987D4F /* mv3-compat-tests Extension (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3943F1D29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test Extension (macOS)" */;
+			buildConfigurationList = B3943F1D29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "mv3-compat-tests Extension (macOS)" */;
 			buildPhases = (
 				B3943EEB29B9DA9700987D4F /* Sources */,
 				B3943EEC29B9DA9700987D4F /* Frameworks */,
@@ -348,9 +348,9 @@
 			);
 			dependencies = (
 			);
-			name = "ddg-mv3-test Extension (macOS)";
+			name = "mv3-compat-tests Extension (macOS)";
 			productName = "ddg-mv3-test Extension (macOS)";
-			productReference = B3943EEF29B9DA9700987D4F /* ddg-mv3-test Extension.appex */;
+			productReference = B3943EEF29B9DA9700987D4F /* mv3-compat-tests Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -377,7 +377,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B3943EAE29B9DA9600987D4F /* Build configuration list for PBXProject "ddg-mv3-test" */;
+			buildConfigurationList = B3943EAE29B9DA9600987D4F /* Build configuration list for PBXProject "mv3-compat-tests" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -390,10 +390,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B3943EC629B9DA9700987D4F /* ddg-mv3-test (iOS) */,
-				B3943ED829B9DA9700987D4F /* ddg-mv3-test (macOS) */,
-				B3943EE429B9DA9700987D4F /* ddg-mv3-test Extension (iOS) */,
-				B3943EEE29B9DA9700987D4F /* ddg-mv3-test Extension (macOS) */,
+				B3943EC629B9DA9700987D4F /* mv3-compat-tests (iOS) */,
+				B3943ED829B9DA9700987D4F /* mv3-compat-tests (macOS) */,
+				B3943EE429B9DA9700987D4F /* mv3-compat-tests Extension (iOS) */,
+				B3943EEE29B9DA9700987D4F /* mv3-compat-tests Extension (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -507,12 +507,12 @@
 /* Begin PBXTargetDependency section */
 		B3943EE829B9DA9700987D4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B3943EE429B9DA9700987D4F /* ddg-mv3-test Extension (iOS) */;
+			target = B3943EE429B9DA9700987D4F /* mv3-compat-tests Extension (iOS) */;
 			targetProxy = B3943EE729B9DA9700987D4F /* PBXContainerItemProxy */;
 		};
 		B3943EF229B9DA9700987D4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B3943EEE29B9DA9700987D4F /* ddg-mv3-test Extension (macOS) */;
+			target = B3943EEE29B9DA9700987D4F /* mv3-compat-tests Extension (macOS) */;
 			targetProxy = B3943EF129B9DA9700987D4F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -684,7 +684,7 @@
 					SafariServices,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test.Extension";
-				PRODUCT_NAME = "ddg-mv3-test Extension";
+				PRODUCT_NAME = "mv3-compat-tests Extension";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -715,7 +715,7 @@
 					SafariServices,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test.Extension";
-				PRODUCT_NAME = "ddg-mv3-test Extension";
+				PRODUCT_NAME = "mv3-compat-tests Extension";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -736,7 +736,7 @@
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "ddg-mv3-test";
+				INFOPLIST_KEY_CFBundleDisplayName = "mv3-compat-tests";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -754,8 +754,8 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test";
-				PRODUCT_NAME = "ddg-mv3-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.mv3-compat-tests";
+				PRODUCT_NAME = "mv3-compat-tests";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -774,7 +774,7 @@
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "ddg-mv3-test";
+				INFOPLIST_KEY_CFBundleDisplayName = "mv3-compat-tests";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -792,8 +792,8 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test";
-				PRODUCT_NAME = "ddg-mv3-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.mv3-compat-tests";
+				PRODUCT_NAME = "mv3-compat-tests";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -826,7 +826,7 @@
 					SafariServices,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test.Extension";
-				PRODUCT_NAME = "ddg-mv3-test Extension";
+				PRODUCT_NAME = "mv3-compat-tests Extension";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -858,7 +858,7 @@
 					SafariServices,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test.Extension";
-				PRODUCT_NAME = "ddg-mv3-test Extension";
+				PRODUCT_NAME = "mv3-compat-tests Extension";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -893,8 +893,8 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test";
-				PRODUCT_NAME = "ddg-mv3-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.mv3-compat-tests";
+				PRODUCT_NAME = "mv3-compat-tests";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -928,8 +928,8 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.ddg-mv3-test";
-				PRODUCT_NAME = "ddg-mv3-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.duckduckgo.mv3-compat-tests";
+				PRODUCT_NAME = "mv3-compat-tests";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -939,7 +939,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B3943EAE29B9DA9600987D4F /* Build configuration list for PBXProject "ddg-mv3-test" */ = {
+		B3943EAE29B9DA9600987D4F /* Build configuration list for PBXProject "mv3-compat-tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3943F1429B9DA9700987D4F /* Debug */,
@@ -948,7 +948,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3943F1629B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test Extension (iOS)" */ = {
+		B3943F1629B9DA9700987D4F /* Build configuration list for PBXNativeTarget "mv3-compat-tests Extension (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3943F1729B9DA9700987D4F /* Debug */,
@@ -957,7 +957,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3943F1A29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test (iOS)" */ = {
+		B3943F1A29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "mv3-compat-tests (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3943F1B29B9DA9700987D4F /* Debug */,
@@ -966,7 +966,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3943F1D29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test Extension (macOS)" */ = {
+		B3943F1D29B9DA9700987D4F /* Build configuration list for PBXNativeTarget "mv3-compat-tests Extension (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3943F1E29B9DA9700987D4F /* Debug */,
@@ -975,7 +975,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3943F2129B9DA9700987D4F /* Build configuration list for PBXNativeTarget "ddg-mv3-test (macOS)" */ = {
+		B3943F2129B9DA9700987D4F /* Build configuration list for PBXNativeTarget "mv3-compat-tests (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3943F2229B9DA9700987D4F /* Debug */,
