@@ -19,6 +19,12 @@ async function dnrTest(addRules, test) {
   }
 }
 
+/**
+ * Unwraps the result of a chrome.scripting.executeScript call to handle inconsistencies
+ * between Chrome and Safari return types.
+ * @param {*} result 
+ * @returns 
+ */
 function getExecuteScriptResults(result) {
   return result.map((r) => (r?.documentId ? r.result : r));
 }
@@ -369,5 +375,40 @@ describe("chrome.declarativeNetRequest", () => {
     const url = new URL((await chrome.tabs.get(tab.id)).url);
     chrome.tabs.remove(tab.id);
     expect(url.search).to.not.contain("fbclid");
+  });
+
+  it("modifyHeaders can add a Sec-GPC header", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 5,
+          priority: 6,
+          action: {
+            type: "modifyHeaders",
+            requestHeaders: [
+              { header: "Sec-GPC", operation: "set", value: "1" },
+            ],
+          },
+          condition: {
+            urlFilter: "||global-privacy-control.glitch.me/",
+            resourceTypes: ["main_frame", "sub_frame"]
+          },
+        },
+      ],
+    });
+    const tab = await loadPageAndWaitForLoad(
+      "https://global-privacy-control.glitch.me/"
+    );
+    const gpcTest = await chrome.scripting.executeScript({
+      target: {
+        tabId: tab.id,
+      },
+      injectImmediately: false,
+      func: () => {
+        return document.querySelector('.gpc-value > code').innerText
+      },
+    });
+    chrome.tabs.remove(tab.id);
+    expect(getExecuteScriptResults(gpcTest)[0]).to.equal('Sec-GPC: "1"');
   });
 });
