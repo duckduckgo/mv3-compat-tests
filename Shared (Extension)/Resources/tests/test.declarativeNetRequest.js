@@ -22,8 +22,8 @@ async function dnrTest(addRules, test) {
 /**
  * Unwraps the result of a chrome.scripting.executeScript call to handle inconsistencies
  * between Chrome and Safari return types.
- * @param {*} result 
- * @returns 
+ * @param {*} result
+ * @returns
  */
 function getExecuteScriptResults(result) {
   return result.map((r) => (r?.documentId ? r.result : r));
@@ -41,9 +41,9 @@ async function runTestPageTest(testPageUrl, waitFor) {
   }
 }
 
-async function executeScriptWorkaround(tabId, func, world = 'ISOLATED') {
-// As executeScript doesn't return results properly on some tested platforms, this is a workaround
-  // that dumps the test result into the url hash. We can then read that back out with the 
+async function executeScriptWorkaround(tabId, func, world = "ISOLATED") {
+  // As executeScript doesn't return results properly on some tested platforms, this is a workaround
+  // that dumps the test result into the url hash. We can then read that back out with the
   // chrome.tabs API
   await chrome.scripting.executeScript({
     target: {
@@ -52,7 +52,7 @@ async function executeScriptWorkaround(tabId, func, world = 'ISOLATED') {
     world,
     func,
   });
-  const hash = new URL((await chrome.tabs.get(tabId)).url).hash
+  const hash = new URL((await chrome.tabs.get(tabId)).url).hash;
   if (hash.length > 0) {
     return decodeURIComponent(hash.slice(1));
   }
@@ -60,11 +60,15 @@ async function executeScriptWorkaround(tabId, func, world = 'ISOLATED') {
 }
 
 async function getTestPageResults(tabId) {
-  const result = await executeScriptWorkaround(tabId, () => {
-    document.location.hash = JSON.stringify(results?.results)
-  }, 'MAIN')
+  const result = await executeScriptWorkaround(
+    tabId,
+    () => {
+      document.location.hash = JSON.stringify(results?.results);
+    },
+    "MAIN"
+  );
   if (result) {
-    return JSON.parse(result)
+    return JSON.parse(result);
   }
 }
 
@@ -280,8 +284,8 @@ describe("chrome.declarativeNetRequest", () => {
     );
     const imgWidthResult = await executeScriptWorkaround(tab.id, () => {
       document.location.hash = document.querySelector("img").width;
-    })
-    
+    });
+
     chrome.tabs.remove(tab.id);
     // if image is 48px then our replacement image was loaded
     expect(parseInt(imgWidthResult, 10)).to.equal(48);
@@ -310,7 +314,7 @@ describe("chrome.declarativeNetRequest", () => {
     );
     const imgWidthResult = await executeScriptWorkaround(tab.id, () => {
       document.location.hash = document.querySelector("img").width;
-    })
+    });
     chrome.tabs.remove(tab.id);
     // if image is 48px then our replacement image was loaded
     expect(parseInt(imgWidthResult, 10)).to.equal(48);
@@ -337,9 +341,13 @@ describe("chrome.declarativeNetRequest", () => {
     const tab = await loadPageAndWaitForLoad(
       "https://privacy-test-pages.glitch.me/tracker-reporting/1major-with-surrogate.html"
     );
-    const surrogateScriptTest = await executeScriptWorkaround(tab.id, () => {
-      document.location.hash = window.surrogate_test
-    }, "MAIN")
+    const surrogateScriptTest = await executeScriptWorkaround(
+      tab.id,
+      () => {
+        document.location.hash = window.surrogate_test;
+      },
+      "MAIN"
+    );
     chrome.tabs.remove(tab.id);
     expect(surrogateScriptTest).to.equal("success");
   });
@@ -375,6 +383,36 @@ describe("chrome.declarativeNetRequest", () => {
     expect(url.search).to.not.contain("fbclid");
   });
 
+  it("queryTransform can add search parameters in main_frame requests", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 6,
+          priority: 2,
+          action: {
+            type: "redirect",
+            redirect: {
+              transform: {
+                queryTransform: {
+                  addOrReplaceParams: [{ key: "test", value: "1" }],
+                },
+              },
+            },
+          },
+          condition: {
+            resourceTypes: ["main_frame"],
+            urlFilter: "||example.com",
+          },
+        },
+      ],
+    });
+    const tab = await loadPageAndWaitForLoad("https://example.com/");
+    const tabUrl = new URL((await chrome.tabs.get(tab.id)).url);
+    chrome.tabs.remove(tab.id);
+    expect(tabUrl.searchParams.has("test")).to.equal(true);
+    expect(tabUrl.searchParams.get("test")).to.equal("1");
+  });
+
   it("modifyHeaders can add a Sec-GPC header", async () => {
     await chrome.declarativeNetRequest.updateDynamicRules({
       addRules: [
@@ -389,7 +427,7 @@ describe("chrome.declarativeNetRequest", () => {
           },
           condition: {
             urlFilter: "||global-privacy-control.glitch.me/",
-            resourceTypes: ["main_frame", "sub_frame"]
+            resourceTypes: ["main_frame", "sub_frame"],
           },
         },
       ],
@@ -403,7 +441,7 @@ describe("chrome.declarativeNetRequest", () => {
       },
       injectImmediately: false,
       func: () => {
-        return document.querySelector('.gpc-value > code').innerText
+        return document.querySelector(".gpc-value > code").innerText;
       },
     });
     chrome.tabs.remove(tab.id);
