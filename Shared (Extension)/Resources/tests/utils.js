@@ -5,7 +5,7 @@ export async function loadPageAndWaitForLoad(url, active = false) {
     const onUpdated = (details) => {
       if (details.tabId === tab.id && details.frameId === 0) {
         resolve();
-        chrome.tabs.onUpdated.removeListener(onUpdated);
+        chrome.webNavigation.onDOMContentLoaded.removeListener(onUpdated);
       }
     };
     chrome.webNavigation.onDOMContentLoaded.addListener(onUpdated);

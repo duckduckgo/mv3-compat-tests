@@ -339,4 +339,35 @@ describe("chrome.declarativeNetRequest", () => {
     chrome.tabs.remove(tab.id);
     expect(getExecuteScriptResults(surrogateScriptTest)[0]).to.equal("success");
   });
+
+  it("queryTransform can remove search parameters", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 5,
+          priority: 2,
+          action: {
+            type: "redirect",
+            redirect: {
+              transform: {
+                queryTransform: {
+                  removeParams: ["fbclid"],
+                },
+              },
+            },
+          },
+          condition: {
+            resourceTypes: ["main_frame"],
+            urlFilter: "||privacy-test-pages.glitch.me/*",
+          },
+        },
+      ],
+    });
+    const tab = await loadPageAndWaitForLoad(
+      "https://privacy-test-pages.glitch.me/privacy-protections/query-parameters/query.html?fbclid=12345&fb_source=someting&u=14"
+    );
+    const url = new URL((await chrome.tabs.get(tab.id)).url);
+    chrome.tabs.remove(tab.id);
+    expect(url.search).to.not.contain("fbclid");
+  });
 });
