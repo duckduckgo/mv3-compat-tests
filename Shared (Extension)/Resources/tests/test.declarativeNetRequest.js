@@ -82,6 +82,10 @@ describe("chrome.declarativeNetRequest", () => {
     await chrome.declarativeNetRequest.updateEnabledRulesets({
       disableRulesetIds: rulesets,
     });
+    const sessionRules = await chrome.declarativeNetRequest.getSessionRules();
+    await chrome.declarativeNetRequest.updateSessionRules({
+      removeRuleIds: sessionRules.map((r) => r.id),
+    });
   });
 
   it("urlFilter with anchor blocks requests on matched domains", async () => {
@@ -446,5 +450,62 @@ describe("chrome.declarativeNetRequest", () => {
     });
     chrome.tabs.remove(tab.id);
     expect(getExecuteScriptResults(gpcTest)[0]).to.equal('Sec-GPC: "1"');
+  });
+
+  it("tabIds rule condition is supported in session rules", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 1,
+          priority: 1,
+          action: {
+            type: "block",
+          },
+          condition: {
+            urlFilter: "||bad.third-party.site/*",
+          },
+        },
+      ],
+    });
+    const tab = await loadPageAndWaitForLoad(
+      "https://privacy-test-pages.glitch.me/privacy-protections/request-blocking/"
+    );
+    await chrome.declarativeNetRequest.updateSessionRules({
+      addRules: [
+        {
+          id: 10,
+          priority: 2,
+          action: {
+            type: "allow",
+          },
+          condition: {
+            urlFilter:
+              "||bad.third-party.site/privacy-protections/request-blocking/block-me/script.js",
+            tabIds: [tab.id],
+          },
+        },
+      ],
+    });
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    await chrome.scripting.executeScript({
+      target: {
+        tabId: tab.id,
+      },
+      func: () => {
+        document.getElementById("start").click();
+      },
+    });
+    while (true) {
+      const result = await getTestPageResults(tab.id);
+      if (
+        result &&
+        result.find((r) => r.id === "script" && r.status !== "not loaded")
+      ) {
+        await chrome.tabs.remove(tab.id);
+        expect(result.find((r) => r.id === "script").status).to.equal("loaded");
+        break;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
   });
 });
