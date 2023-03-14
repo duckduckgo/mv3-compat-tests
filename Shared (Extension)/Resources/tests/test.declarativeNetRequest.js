@@ -8,6 +8,7 @@ const testUrl =
 async function dnrTest(addRules, test) {
   try {
     await chrome.declarativeNetRequest.updateDynamicRules({
+      // removeRuleIds: addRules.map((r) => r.id),
       addRules,
     });
     await test();
@@ -164,7 +165,6 @@ describe("chrome.declarativeNetRequest", () => {
               (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
             )
         );
-        console.log(result);
         expect(result.find((r) => r.id === "xmlhttprequest").status).to.equal(
           "loaded"
         );
@@ -198,11 +198,42 @@ describe("chrome.declarativeNetRequest", () => {
               (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
             )
         );
-        console.log(result);
         expect(result.find((r) => r.id === "xmlhttprequest").status).to.equal(
           "loaded"
         );
       }
+    );
+  });
+
+  it("allowAllRequests rules work when `removeRuleIds` is used in the same updateDynamicRules call", async () => {
+    await chrome.declarativeNetRequest.updateEnabledRulesets({
+      enableRulesetIds: ["test_rules_blocking"],
+    });
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: [2],
+      addRules: [
+        {
+          id: 2,
+          priority: 2,
+          action: {
+            type: "allowAllRequests",
+          },
+          condition: {
+            urlFilter: "||privacy-test-pages.glitch.me/",
+            resourceTypes: ["main_frame"],
+          },
+        },
+      ],
+    });
+    const result = await runTestPageTest(
+      "https://privacy-test-pages.glitch.me/privacy-protections/request-blocking/?run",
+      (results) =>
+        results.find(
+          (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+        )
+    );
+    expect(result.find((r) => r.id === "xmlhttprequest").status).to.equal(
+      "loaded"
     );
   });
 });

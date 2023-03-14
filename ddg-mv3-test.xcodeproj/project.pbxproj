@@ -51,6 +51,8 @@
 		B3943F2929B9DCBC00987D4F /* vendor in Resources */ = {isa = PBXBuildFile; fileRef = B3943F2729B9DCBC00987D4F /* vendor */; };
 		B3943F2E29BA11CE00987D4F /* tests in Resources */ = {isa = PBXBuildFile; fileRef = B3943F2D29BA11CE00987D4F /* tests */; };
 		B3943F2F29BA11CE00987D4F /* tests in Resources */ = {isa = PBXBuildFile; fileRef = B3943F2D29BA11CE00987D4F /* tests */; };
+		B3943F3129BF278500987D4F /* content-script.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943F3029BF278500987D4F /* content-script.js */; };
+		B3943F3229BF278500987D4F /* content-script.js in Resources */ = {isa = PBXBuildFile; fileRef = B3943F3029BF278500987D4F /* content-script.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +131,7 @@
 		B3943F2429B9DC5300987D4F /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		B3943F2729B9DCBC00987D4F /* vendor */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vendor; sourceTree = "<group>"; };
 		B3943F2D29BA11CE00987D4F /* tests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tests; sourceTree = "<group>"; };
+		B3943F3029BF278500987D4F /* content-script.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "content-script.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +212,7 @@
 		B3943EBA29B9DA9700987D4F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3943F3029BF278500987D4F /* content-script.js */,
 				B3943F2D29BA11CE00987D4F /* tests */,
 				B3943F2729B9DCBC00987D4F /* vendor */,
 				B3943F2429B9DC5300987D4F /* test.html */,
@@ -431,6 +435,7 @@
 				B3943F0A29B9DA9700987D4F /* background.js in Resources */,
 				B3943F1029B9DA9700987D4F /* popup.css in Resources */,
 				B3943F0E29B9DA9700987D4F /* popup.html in Resources */,
+				B3943F3129BF278500987D4F /* content-script.js in Resources */,
 				B3943F0629B9DA9700987D4F /* images in Resources */,
 				B3943F0829B9DA9700987D4F /* manifest.json in Resources */,
 				B3943F0429B9DA9700987D4F /* _locales in Resources */,
@@ -449,6 +454,7 @@
 				B3943F0B29B9DA9700987D4F /* background.js in Resources */,
 				B3943F1129B9DA9700987D4F /* popup.css in Resources */,
 				B3943F0F29B9DA9700987D4F /* popup.html in Resources */,
+				B3943F3229BF278500987D4F /* content-script.js in Resources */,
 				B3943F0729B9DA9700987D4F /* images in Resources */,
 				B3943F0929B9DA9700987D4F /* manifest.json in Resources */,
 				B3943F0529B9DA9700987D4F /* _locales in Resources */,

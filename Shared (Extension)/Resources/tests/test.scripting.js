@@ -3,10 +3,9 @@ import { loadPageAndWaitForLoad } from "./utils.js";
 const { expect } = chai;
 
 describe("chrome.scripting.executeScript", () => {
-  it("Returns an array of InjectionResult", async () => {
+  it("Returns an array of InjectionResult (https://developer.chrome.com/docs/extensions/reference/scripting/#type-InjectionResult)", async () => {
     const url = "https://privacy-test-pages.glitch.me/";
     const tab = await loadPageAndWaitForLoad(url)
-    await new Promise(resolve => setTimeout(resolve, 500))
     const result = await chrome.scripting.executeScript({
       target: {
         tabId: tab.id,
@@ -19,7 +18,8 @@ describe("chrome.scripting.executeScript", () => {
     chrome.tabs.remove(tab.id);
     expect(result).to.be.an("array");
     expect(result).to.have.lengthOf(1);
-    const injectionResultProperties = ["documentId", "frameId", "result"];
+    expect(result[0]).to.be.an('object');
+    const injectionResultProperties = ["frameId", "result"];
     injectionResultProperties.forEach((prop) =>
       expect(result[0]).to.have.property(prop)
     );
@@ -27,3 +27,32 @@ describe("chrome.scripting.executeScript", () => {
     expect(result[0].result).to.equal(url);
   });
 });
+
+describe('chrome.scripting.registerContentScripts', () => {
+
+  afterEach(async () => {
+    await chrome.scripting.unregisterContentScripts()
+  })
+
+  it('Can register content-scripts at document_start', async () => {
+    // register a script at document_start
+    const scriptOptions = {
+      id: '1-document-start-cs',
+      allFrames: false,
+      matches: ['https://example.com/'],
+      persistAcrossSessions: false,
+      runAt: 'document_start',
+      world: 'ISOLATED',
+      js: ['/content-script.js']
+    }
+    await chrome.scripting.registerContentScripts([scriptOptions])
+    // check the registration
+    const registered = await chrome.scripting.getRegisteredContentScripts()
+    expect(registered).to.be.an("array");
+    expect(registered).to.have.lengthOf(1);
+    Object.keys(scriptOptions).forEach((k) => {
+      expect(registered[0]).to.have.property(k)
+    })
+    expect(registered[0].runAt).to.equal(scriptOptions.runAt)
+  })
+})

@@ -1,6 +1,6 @@
 {
     "extension_name": {
-        "message": "ddg-mv3-test",
+        "message": "mv3-compat-tests",
         "description": "The display name for the extension."
     },
     "extension_description": {
