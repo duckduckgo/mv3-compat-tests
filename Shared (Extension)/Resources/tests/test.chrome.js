@@ -5,7 +5,7 @@ describe("API scopes", () => {
     chai.expect(typeof chrome).to.equal("object");
   });
 
-  const apis = ["tabs", "declarativeNetRequest"];
+  const apis = ["tabs", "declarativeNetRequest", "runtime"];
 
   apis.forEach((api) => {
     it(`chrome.${api} is present on extension pages`, () => {

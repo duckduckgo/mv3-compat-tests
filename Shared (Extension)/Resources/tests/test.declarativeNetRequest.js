@@ -210,7 +210,7 @@ describe("chrome.declarativeNetRequest", () => {
       enableRulesetIds: ["test_rules_blocking"],
     });
     await chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: [2],
+      removeRuleIds: [1],
       addRules: [
         {
           id: 2,
@@ -237,5 +237,3 @@ describe("chrome.declarativeNetRequest", () => {
     );
   });
 });
-
-mocha.run();

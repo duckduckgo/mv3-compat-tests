@@ -55,4 +55,31 @@ describe('chrome.scripting.registerContentScripts', () => {
     })
     expect(registered[0].runAt).to.equal(scriptOptions.runAt)
   })
+
+  it('Does not affect content-scripts declared in the manifest', async () => {
+    const scriptOptions = {
+      id: '1-document-start-cs',
+      allFrames: false,
+      matches: ['https://example.com/'],
+      persistAcrossSessions: false,
+      runAt: 'document_start',
+      world: 'ISOLATED',
+      js: ['/content-script.js']
+    }
+    await chrome.scripting.registerContentScripts([scriptOptions])
+
+    // check that content-script declared in the manifest is not affected
+    const messageReceived = new Promise((resolve) => {
+      function messageListener(m) {
+        resolve(m);
+        chrome.runtime.onMessage.removeListener(messageListener);
+      }
+      chrome.runtime.onMessage.addListener(messageListener);
+    });
+    const tab = await loadPageAndWaitForLoad("https://example.com/");
+    const response = await messageReceived
+    chrome.tabs.remove(tab.id)
+    expect(response).to.be.an('object')
+    expect(response.greeting).to.equal('hello')
+  })
 })

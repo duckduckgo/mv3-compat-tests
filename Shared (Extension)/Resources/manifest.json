@@ -21,7 +21,10 @@
             ],
             "matches": [
                 "*://example.com/*"
-            ]
+            ],
+            "run_at": "document_start",
+            "all_frames": false,
+            "match_about_blank": false
         }
     ],
     "action": {
