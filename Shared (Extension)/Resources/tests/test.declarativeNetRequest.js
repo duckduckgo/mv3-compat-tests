@@ -236,4 +236,107 @@ describe("chrome.declarativeNetRequest", () => {
       "loaded"
     );
   });
+
+  it("redirect to extension image url with anchored urlFilter", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 3,
+          priority: 2,
+          action: {
+            type: "redirect",
+            redirect: {
+              extensionPath: "/images/icon-48.png",
+            },
+          },
+          condition: {
+            urlFilter: "||facebook.com/tr",
+          },
+        },
+      ],
+    });
+    const tab = await loadPageAndWaitForLoad(
+      "https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-img.html"
+    );
+    const imgWidthResult = await chrome.scripting.executeScript({
+      target: {
+        tabId: tab.id,
+      },
+      func: () => {
+        return document.querySelector("img").width;
+      },
+    });
+    chrome.tabs.remove(tab.id);
+    // if image is 48px then our replacement image was loaded
+    expect(getExecuteScriptResults(imgWidthResult)[0]).to.equal(48);
+  });
+
+  it("redirect to extension image url with explicit urlFilter", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 3,
+          priority: 2,
+          action: {
+            type: "redirect",
+            redirect: {
+              extensionPath: "/images/icon-48.png",
+            },
+          },
+          condition: {
+            urlFilter: "https://facebook.com/tr",
+          },
+        },
+      ],
+    });
+    const tab = await loadPageAndWaitForLoad(
+      "https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-img.html"
+    );
+    const imgWidthResult = await chrome.scripting.executeScript({
+      target: {
+        tabId: tab.id,
+      },
+      func: () => {
+        return document.querySelector("img").width;
+      },
+    });
+    chrome.tabs.remove(tab.id);
+    // if image is 48px then our replacement image was loaded
+    expect(getExecuteScriptResults(imgWidthResult)[0]).to.equal(48);
+  });
+
+  it("redirect to extension script url with anchored urlFilter", async () => {
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      addRules: [
+        {
+          id: 4,
+          priority: 2,
+          action: {
+            type: "redirect",
+            redirect: {
+              extensionPath: "/surrogate.js",
+            },
+          },
+          condition: {
+            urlFilter: "||doubleclick.net/instream/ad_status.js",
+          },
+        },
+      ],
+    });
+    const tab = await loadPageAndWaitForLoad(
+      "https://privacy-test-pages.glitch.me/tracker-reporting/1major-with-surrogate.html"
+    );
+    const surrogateScriptTest = await chrome.scripting.executeScript({
+      target: {
+        tabId: tab.id,
+      },
+      injectImmediately: false,
+      world: "MAIN",
+      func: () => {
+        return window.surrogate_test;
+      },
+    });
+    chrome.tabs.remove(tab.id);
+    expect(getExecuteScriptResults(surrogateScriptTest)[0]).to.equal("success");
+  });
 });
