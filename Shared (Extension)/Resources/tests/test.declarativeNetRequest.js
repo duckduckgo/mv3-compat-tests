@@ -671,4 +671,25 @@ describe("chrome.declarativeNetRequest", () => {
     });
     await Promise.all([testBlocked, testAllowed]);
   });
+
+  it('redirect supports regexSubstitution', async () => {
+      await chrome.declarativeNetRequest.updateDynamicRules({
+        addRules: [{
+          id: 12,
+          priority: 1,
+          action: {
+            type: 'redirect',
+            redirect: { regexSubstitution: 'https://\\1' },
+          },
+          condition: {
+            resourceTypes: ['main_frame'],
+            regexFilter: "^https?:\\/\\/\\S+ampproject\\.org\\/\\S\\/s\\/(\\S+)$"
+          }
+        }]
+      })
+      const tab = await loadPageAndWaitForLoad('https://www-wpxi-com.cdn.ampproject.org/v/s/www.wpxi.com/news/top-stories/pihl-bans-armstrong-student-section-hockey-games-after-vulgar-chants-directed-female-goalie/G2RP5FZA3ZDYRLFSWGDGQH2MY4/?amp_js_v=a6&_gsa=1&outputType=amp&usqp=mq331AQKKAFQArABIIACAw%3D%3D&referrer=https%3A%2F%2Fwww.google.com&_tf=From%20%251%24s&ampshare=https%3A%2F%2Fwww.wpxi.com%2Fnews%2Ftop-stories%2Fpihl-bans-armstrong-student-section-hockey-games-after-vulgar-chants-directed-female-goalie%2FG2RP5FZA3ZDYRLFSWGDGQH2MY4%2F')
+      const tabUrl = (await chrome.tabs.get(tab.id)).url
+      chrome.tabs.remove(tab.id)
+      expect(tabUrl.indexOf('https://www.wpxi.com/')).to.equal(0)
+  })
 });
