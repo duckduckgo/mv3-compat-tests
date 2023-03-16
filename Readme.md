@@ -89,4 +89,4 @@ Failures:
 
 Failures:
  - `chrome.scripting.registerContentScripts`: `world` property is not supported.
- - `chrome.declarativeNetRequest`
+ - `chrome.declarativeNetRequest`: Most tests fail due to lack of support for `MAIN` world scripts, which we require to check test results in test pages.
