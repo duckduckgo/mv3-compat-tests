@@ -63,7 +63,7 @@ Failures:
     - 'modifyHeaders can add a Sec-GPC header': "Invalid call to declarativeNetRequest.updateDynamicRules(). Error with rule at index 0: Rule with id 5 is invalid. `modifyHeaders` is not a supported action type". `modifyHeaders` is not supported.
     - 'initiatorDomains' condition limits matches to requests initiated by matching domain: This option is only supported under the legacy 'domains' property.
     - 'domains' condition list matches initators' subdomains: Safari only matches exact domains in `domains` conditions.
-
+    - The rule condition must contain `regexFilter` or `urlFilter`, otherwise the rule is ignored for dynamic rules and it breaks setting static rulesets.
 ### Safari Technology Preview 165
 
 Failures:
@@ -80,6 +80,7 @@ Failures:
     - 'modifyHeaders can add a Sec-GPC header'. Same as in 16.3.
     - ''initiatorDomains' condition limits matches to requests initiated by matching domain'. Same as in 16.3.
     - ''domains' condition list matches initators' subdomains'. Same as in 16.3
+    - The rule condition must contain `regexFilter` or `urlFilter`, otherwise the rule is ignored for dynamic rules and it breaks setting static rulesets.
 
 ### Firefox Nightly 112
 

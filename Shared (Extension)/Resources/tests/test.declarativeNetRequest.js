@@ -768,4 +768,26 @@ describe("chrome.declarativeNetRequest", () => {
     );
     expect(result.find((r) => r.id === "script").status).to.equal("loaded");
   });
+
+  it('adds dynamic block rule without regexFilter and urlFiler in condition', async () => {
+    await dnrTest(
+      [
+        {
+          id: 1,
+          priority: 1,
+          action: {
+            type: "block",
+          },
+          condition: {
+            domainType: 'thirdParty',
+            domains: ['example.com'],
+          },
+        },
+      ],
+      async () => {
+        const rules = await chrome.declarativeNetRequest.getDynamicRules();
+        expect(rules.length).to.equal(1);
+      }
+    );
+  });
 });
