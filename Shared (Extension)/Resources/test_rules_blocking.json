@@ -8,5 +8,15 @@
         "condition": {
             "urlFilter": "||bad.third-party.site/*"
         }
+    },
+    {
+        "id": 10001,
+        "priority": 1,
+        "action": {
+            "type": "invalid"
+        },
+        "condition": {
+            "urlFilter": "||example.com"
+        }
     }
 ]

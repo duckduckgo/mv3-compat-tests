@@ -790,4 +790,88 @@ describe("chrome.declarativeNetRequest", () => {
       }
     );
   });
+
+  it('adding unsupported DNR rules dynamically', async () => {
+    try {
+      await chrome.declarativeNetRequest.updateDynamicRules({
+        addRules: [
+          {
+            "id": 990,
+            "priority": 1,
+            "action": {
+                "type": "block"
+            },
+            "condition": {
+                "urlFilter": "||bad.third-party.site/*"
+            }
+        },
+        {
+            "id": 999,
+            "priority": 1,
+            "action": {
+                "type": "invalid"
+            },
+            "condition": {
+                "urlFilter": "||"
+            }
+        },
+        {
+          "id": 1000,
+          "priority": 1,
+          "action": {
+              "type": "block"
+          },
+          "condition": {
+              "urlFilter": "||bad.third-party.site/hello"
+          }
+        }
+      ]})
+      expect.fail('updateDynamicRules should throw')
+    } catch(e) {
+      console.log(e)
+      expect(await chrome.declarativeNetRequest.getDynamicRules()).to.have.length(0)
+    }
+  })
+
+  it('adding invalid DNR rules dynamically', async () => {
+    try {
+      await chrome.declarativeNetRequest.updateDynamicRules({
+        addRules: [
+          {
+            "id": 990,
+            "priority": 1,
+            "action": {
+                "type": "block"
+            },
+            "condition": {
+                "urlFilter": "||bad.third-party.site/*"
+            }
+        },
+        {
+            "id": 1000,
+            "priority": 1,
+            "action": {
+                "type": "block"
+            },
+            "condition": {
+                "urlFilter": "||"
+            }
+        },
+        {
+          "id": 1000,
+          "priority": 1,
+          "action": {
+              "type": "block"
+          },
+          "condition": {
+              "urlFilter": "||bad.third-party.site/hello"
+          }
+        }
+      ]})
+      expect.fail('updateDynamicRules should throw')
+    } catch(e) {
+      console.log(e)
+      expect(await chrome.declarativeNetRequest.getDynamicRules()).to.have.length(0)
+    }
+  })
 });
