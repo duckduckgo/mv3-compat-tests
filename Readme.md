@@ -44,46 +44,31 @@ to surface issues we've found testing MV3 APIs across platforms.
 
 ## Results
 
-### Chrome 110
+Current status table (only failing tests shown):
 
-All tests pass here, as this is the reference implementation for these tests.
+| Test | Chrome 110 | Safari 17.1 | Safari Tech Preview 183 | Firefox Nightly 122 |
+| --- | --- | --- | --- | --- |
+| `scripting.executeScript`: Returns an array of InjectionResult | ✅ | ✅ (fixed in Safari 17)[^1] | ✅ | ❌ |
+| `scripting.registerContentScripts`: Can register content-scripts at document_start | ✅ | ✅ (fixed in Safari 17)[^2] | ✅ | ❌[^9] |
+| `declarativeNetRequest`: requestDomains condition triggers on matched domains |  ✅ | ❌[^3] | ❌ | ❌[^9] |
+| `declarativeNetRequest`: allowAllRequests disables static blocking rules when document URL matches |  ✅ | ❌[^4]| ✅ | ❌[^9] |
+| `declarativeNetRequest`: allowAllRequests rules work when `removeRuleIds` is used in the same updateDynamicRules call |  ✅ | ❌[^5] | ✅ | ❌[^9] |
+| `declarativeNetRequest`: redirect to extension image url with anchored urlFilter |  ✅ | ❌ | ✅ | ❌ |
+| `declarativeNetRequest`: queryTransform can add search parameters in main_frame requests |  ✅ | ❌ | ❌ | ✅ |
+| `declarativeNetRequest`: modifyHeaders can add a Sec-GPC header |  ✅ | ❌[^6] | ❌ | ✅ |
+| `declarativeNetRequest`: 'initiatorDomains' condition limits matches to requests initiated by matching domain |  ✅ | ❌[^7] | ❌ | ❌[^9] |
+| `declarativeNetRequest`: 'initiatorDomains' condition list matches initators' subdomains |  ✅ | ❌[^8] | ❌ | ❌[^9] |
+| `declarativeNetRequest`: 'domains' condition list matches initators' subdomains |  ✅ | ❌[^8] | ✅ | ❌[^10] |
+| `declarativeNetRequest`: redirect supports regexSubstitution |  ✅ | ❌ | ❌ | ✅ |
 
-### Safari 16.3
-
-Failures:
- - `chrome.scripting.executeScript`
-    - 'Returns an array of InjectionResult': "expected null to be an object". This failure is due to this API not returning the result of `func`, the function passed to the script injection back to the background context. Instead, an array of `null` is returned.
- - `chrome.scripting.registerContentScripts`
-    -  'Can register content-scripts at document_start': "chrome.scripting.registerContentScripts is not a function". This API is not yet implemented in Safari 16.3.
- - `chrome.declarativeNetRequest`
-    - 'enabling static ruleset with anchor block rule blocks requests': Requests are not blocked after loading a simple static DNR ruleset.
-    - 'requestDomains condition triggers on matched domains': Rules using the `requestDomains` condition are not supported.
-    - 'allowAllRequests disables static blocking rules when document URL matches': The `allowAllRequests` rule does not disable blocking rules defined in a static ruleset.
-    - 'allowAllRequests rules work when `removeRuleIds` is used in the same updateDynamicRules call'. When calling `updateDynamicRules` with both `removeRuleIds` and `addRules` options, this `allowAllRequests` rule does not get added.
-    - 'modifyHeaders can add a Sec-GPC header': "Invalid call to declarativeNetRequest.updateDynamicRules(). Error with rule at index 0: Rule with id 5 is invalid. `modifyHeaders` is not a supported action type". `modifyHeaders` is not supported.
-    - 'initiatorDomains' condition limits matches to requests initiated by matching domain: This option is only supported under the legacy 'domains' property.
-    - 'domains' condition list matches initators' subdomains: Safari only matches exact domains in `domains` conditions.
-    - The rule condition must contain `regexFilter` or `urlFilter`, otherwise the rule is ignored for dynamic rules and it breaks setting static rulesets.
-### Safari Technology Preview 165
-
-Failures:
- - `chrome.scripting.executeScript`
-    - 'Returns an array of InjectionResult': "expected 'https://privacy-test-pages.glitch.me/' to be an object". This failure is due to the API returning a flat array of results of the function passed to the script injection, rather than an array if [InjectionResult](https://developer.chrome.com/docs/extensions/reference/scripting/#type-InjectionResult) as per the Chrome documentation.
- - `chrome.scripting.registerContentScripts`
-    - 'Can register content-scripts at document_start': "expected 'document_idle' to equal 'document_start'". Content scripts registered with `runAt` as `document_start` are registered instead to run at `document_idle`.
-    - 'Does not affect content-scripts declared in the manifest'. After registering a content script via this API, content scripts declared in the manifest `content_scripts` property are no longer run.
- - `chrome.declarativeNetRequest`
-    - 'requestDomains condition triggers on matched domains': Rules using the `requestDomains` condition do not trigger.
-    - 'allowAllRequests disables static blocking rules when document URL matches'. Same as in 16.3
-    - 'allowAllRequests rules work when `removeRuleIds` is used in the same updateDynamicRules call'. Same as in 16.3
-    - 'queryTransform can add search parameters in main_frame requests'. Regression since 16.3. Same as above.
-    - 'modifyHeaders can add a Sec-GPC header'. Same as in 16.3.
-    - ''initiatorDomains' condition limits matches to requests initiated by matching domain'. Same as in 16.3.
-    - ''domains' condition list matches initators' subdomains'. Same as in 16.3
-    - The rule condition must contain `regexFilter` or `urlFilter`, otherwise the rule is ignored for dynamic rules and it breaks setting static rulesets.
-
-### Firefox Nightly 112
-
-Failures:
- - `chrome.scripting.registerContentScripts`: `world` property is not supported.
- - `chrome.declarativeNetRequest`: Most tests fail due to lack of support for `MAIN` world scripts, which we require to check test results in test pages.
+ [^1]: This failure is due to this API not returning the result of `func`, the function passed to the script injection back to the background context. Instead, an array of `null` is returned.
+ [^2]: "chrome.scripting.registerContentScripts is not a function". This API is not yet implemented in Safari 16.3.
+ [^3]: Rules using the `requestDomains` condition are not supported.
+ [^4]: The `allowAllRequests` rule does not disable blocking rules defined in a static ruleset.
+ [^5]: When calling `updateDynamicRules` with both `removeRuleIds` and `addRules` options, this `allowAllRequests` rule does not get added.
+ [^6]: Invalid call to declarativeNetRequest.updateDynamicRules(). Error with rule at index 0: Rule with id 5 is invalid. `modifyHeaders` is not a supported action type". `modifyHeaders` is not supported.
+ [^7]: This option is only supported under the legacy 'domains' property.
+ [^8]: Safari only matches exact domains in `domains` conditions. Subdomain matches require a `*` prefix on the domain.
+ [^9]: `world` parameter of `scripting.registerContentScripts` is not supported in Firefox - this prevents many other tests from running, as we use a content-script as part of the test-suite.
+ [^10]: `domains` condition for DNR is not supported in Firefox.
+ 
