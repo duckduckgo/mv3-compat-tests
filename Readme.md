@@ -47,7 +47,7 @@ to surface issues we've found testing MV3 APIs across platforms.
 Current status table (only failing tests shown):
 
 | Test | Chrome 110 | Safari 17.1 | Safari Tech Preview 183 | Firefox Nightly 122 |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | `scripting.executeScript`: Returns an array of InjectionResult | ✅ | ✅ (fixed in Safari 17)[^1] | ✅ | ❌ |
 | `scripting.registerContentScripts`: Can register content-scripts at document_start | ✅ | ✅ (fixed in Safari 17)[^2] | ✅ | ❌[^9] |
 | `declarativeNetRequest`: requestDomains condition triggers on matched domains |  ✅ | ❌[^3] | ❌ | ❌[^9] |
