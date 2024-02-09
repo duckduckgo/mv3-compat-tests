@@ -46,29 +46,26 @@ to surface issues we've found testing MV3 APIs across platforms.
 
 Current status table (only failing tests shown):
 
-| Test | Chrome 110 | Safari 17.1 | Safari Tech Preview 183 | Firefox Nightly 122 |
+| Test | Chrome 110 | Safari 17.2 | Safari Tech Preview 188 | Firefox Nightly 122 |
 | --- | --- | --- | --- | --- |
 | `scripting.executeScript`: Returns an array of InjectionResult | ✅ | ✅ (fixed in Safari 17)[^1] | ✅ | ❌ |
 | `scripting.registerContentScripts`: Can register content-scripts at document_start | ✅ | ✅ (fixed in Safari 17)[^2] | ✅ | ❌[^9] |
 | `declarativeNetRequest`: requestDomains condition triggers on matched domains |  ✅ | ❌[^3] | ❌ | ❌[^9] |
-| `declarativeNetRequest`: allowAllRequests disables static blocking rules when document URL matches |  ✅ | ❌[^4]| ✅ | ❌[^9] |
-| `declarativeNetRequest`: allowAllRequests rules work when `removeRuleIds` is used in the same updateDynamicRules call |  ✅ | ❌[^5] | ✅ | ❌[^9] |
-| `declarativeNetRequest`: redirect to extension image url with anchored urlFilter |  ✅ | ❌ | ✅ | ❌ |
+| `declarativeNetRequest`: allowAllRequests disables static blocking rules when document URL matches |  ✅ | ✅ (fixed in Safari 17.2)| ✅ | ❌[^9] |
+| `declarativeNetRequest`: allowAllRequests rules work when `removeRuleIds` is used in the same updateDynamicRules call |  ✅ | ✅ | ✅ | ❌[^9] |
+| `declarativeNetRequest`: redirect to extension image url with anchored urlFilter |  ✅ | ✅ | ✅ | ❌ |
 | `declarativeNetRequest`: queryTransform can add search parameters in main_frame requests |  ✅ | ❌ | ❌ | ✅ |
 | `declarativeNetRequest`: modifyHeaders can add a Sec-GPC header |  ✅ | ❌[^6] | ❌ | ✅ |
 | `declarativeNetRequest`: 'initiatorDomains' condition limits matches to requests initiated by matching domain |  ✅ | ❌[^7] | ❌ | ❌[^9] |
 | `declarativeNetRequest`: 'initiatorDomains' condition list matches initators' subdomains |  ✅ | ❌[^8] | ❌ | ❌[^9] |
-| `declarativeNetRequest`: 'domains' condition list matches initators' subdomains |  ✅ | ❌[^8] | ✅ | ❌[^10] |
+| `declarativeNetRequest`: 'domains' condition list matches initators' subdomains |  ✅ | ✅ | ✅ | ❌[^10] |
 | `declarativeNetRequest`: redirect supports regexSubstitution |  ✅ | ❌ | ❌ | ✅ |
 
  [^1]: This failure is due to this API not returning the result of `func`, the function passed to the script injection back to the background context. Instead, an array of `null` is returned.
  [^2]: "chrome.scripting.registerContentScripts is not a function". This API is not yet implemented in Safari 16.3.
  [^3]: Rules using the `requestDomains` condition are not supported.
- [^4]: The `allowAllRequests` rule does not disable blocking rules defined in a static ruleset.
- [^5]: When calling `updateDynamicRules` with both `removeRuleIds` and `addRules` options, this `allowAllRequests` rule does not get added.
  [^6]: Invalid call to declarativeNetRequest.updateDynamicRules(). Error with rule at index 0: Rule with id 5 is invalid. `modifyHeaders` is not a supported action type". `modifyHeaders` is not supported.
  [^7]: This option is only supported under the legacy 'domains' property.
- [^8]: Safari only matches exact domains in `domains` conditions. Subdomain matches require a `*` prefix on the domain.
  [^9]: `world` parameter of `scripting.registerContentScripts` is not supported in Firefox - this prevents many other tests from running, as we use a content-script as part of the test-suite.
  [^10]: `domains` condition for DNR is not supported in Firefox.
  
