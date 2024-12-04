@@ -128,12 +128,72 @@ describe("chrome.declarativeNetRequest", () => {
     });
   });
 
+  it("requestDomains condition triggers on firstParty request", async () => {
+    await dnrTest(
+      [
+        {
+          id: 1,
+          priority: 2,
+          action: {
+            type: "block"
+          },
+          condition: {
+            requestDomains: ["bad.third-party.site"],
+            urlFilter: '/privacy-protections/request-blocking/block-me/'
+          }
+        }
+      ],
+      async () => {
+        const result = await runTestPageTest(
+          "https://bad.third-party.site/privacy-protections/request-blocking/?run",
+          (results) =>
+            results.find(
+              (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+            )
+        );
+        expect(
+          result.find((r) => r.id === "xmlhttprequest").status
+        ).to.not.equal("loaded");
+      }
+    )
+  })
+
+  it("cannot filter on a different domain to what is in requestDomains", async () => {
+    await dnrTest(
+      [
+        {
+          id: 3,
+          priority: 2,
+          action: {
+              type: "block"
+          },
+          condition: {
+              urlFilter: "||bad.third-party.site",
+              requestDomains: ["privacy-test-pages.site"]
+          }
+        }
+      ],
+      async () => {
+        const result = await runTestPageTest(
+          "https://privacy-test-pages.site/privacy-protections/request-blocking/?run",
+          (results) =>
+            results.find(
+              (r) => r.id === "xmlhttprequest" && r.status !== "not loaded"
+            )
+        );
+        expect(
+          result.find((r) => r.id === "xmlhttprequest").status
+        ).to.equal("loaded");
+      }
+    )
+  })
+
   it("requestDomains condition triggers on matched domains", async () => {
     await dnrTest(
       [
         {
           id: 1,
-          priority: 1,
+          priority: 2,
           action: {
             type: "block",
           },
