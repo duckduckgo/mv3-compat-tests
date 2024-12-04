@@ -41,35 +41,32 @@ async function runTestPageTest(testPageUrl, waitFor) {
   }
 }
 
-async function executeScriptWorkaround(tabId, func, world = "ISOLATED") {
+async function executeScript(tabId, func, world = "ISOLATED") {
   // As executeScript doesn't return results properly on some tested platforms, this is a workaround
   // that dumps the test result into the url hash. We can then read that back out with the
   // chrome.tabs API
-  await chrome.scripting.executeScript({
+  const result = await chrome.scripting.executeScript({
     target: {
       tabId,
     },
     world,
     func,
   });
-  const hash = new URL((await chrome.tabs.get(tabId)).url).hash;
-  if (hash.length > 0) {
-    return decodeURIComponent(hash.slice(1));
+  if (result.length > 0) {
+    return result[0].result;
   }
-  return null;
+  return null
 }
 
 async function getTestPageResults(tabId) {
-  const result = await executeScriptWorkaround(
-    tabId,
-    () => {
-      document.location.hash = JSON.stringify(results?.results);
+  const result = await chrome.scripting.executeScript({
+    target: { tabId },
+    world: 'MAIN',
+    func: () => {
+      return results?.results;
     },
-    "MAIN"
-  );
-  if (result) {
-    return JSON.parse(result);
-  }
+  });
+  return result[0].result
 }
 
 describe("chrome.declarativeNetRequest", () => {
@@ -286,9 +283,7 @@ describe("chrome.declarativeNetRequest", () => {
     const tab = await loadPageAndWaitForLoad(
       "https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-img.html"
     );
-    const imgWidthResult = await executeScriptWorkaround(tab.id, () => {
-      document.location.hash = document.querySelector("img").width;
-    });
+    const imgWidthResult = await executeScript(tab.id, () => document.querySelector("img").width);
 
     chrome.tabs.remove(tab.id);
     // if image is 48px then our replacement image was loaded
@@ -316,9 +311,7 @@ describe("chrome.declarativeNetRequest", () => {
     const tab = await loadPageAndWaitForLoad(
       "https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-img.html"
     );
-    const imgWidthResult = await executeScriptWorkaround(tab.id, () => {
-      document.location.hash = document.querySelector("img").width;
-    });
+    const imgWidthResult = await executeScript(tab.id, () => document.querySelector("img").width);
     chrome.tabs.remove(tab.id);
     // if image is 48px then our replacement image was loaded
     expect(parseInt(imgWidthResult, 10)).to.equal(48);
@@ -345,11 +338,9 @@ describe("chrome.declarativeNetRequest", () => {
     const tab = await loadPageAndWaitForLoad(
       "https://privacy-test-pages.glitch.me/tracker-reporting/1major-with-surrogate.html"
     );
-    const surrogateScriptTest = await executeScriptWorkaround(
+    const surrogateScriptTest = await executeScript(
       tab.id,
-      () => {
-        document.location.hash = window.surrogate_test;
-      },
+      () => window.surrogate_test,
       "MAIN"
     );
     chrome.tabs.remove(tab.id);
